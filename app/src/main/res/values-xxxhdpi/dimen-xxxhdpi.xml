@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background -->
+    <dimen name="size_first_part">600dp</dimen>
+    <dimen name="size_margin_right">320dp</dimen>
+</resources>
