@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_part">95dp</dimen>
+    <dimen name="size_first_part">600dp</dimen>
+    <dimen name="size_margin_right">320dp</dimen>
+    <dimen name="margin">370dp</dimen>
+</resources>

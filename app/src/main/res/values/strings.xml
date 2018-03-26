@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MoodTracker</string>
+    <string name="smiley_happy">smiley_happy</string>
+    <string name="il_y_a_6_jours">Il y a 6 jours</string>
+    <string name="il_y_a_une_semaine">Il y a une semaine</string>
+    <string name="il_y_a_5_jours">Il y a 5 jours</string>
+    <string name="il_y_a_4_jours">Il y a 4 jours</string>
+    <string name="il_y_a_3_jours">Il y a 3 jours</string>
+    <string name="hier">Hier</string>
+    <string name="avant_hier">Avant-hier</string>
+</resources>

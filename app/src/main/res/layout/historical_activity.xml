@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CECECE"
+    android:orientation="vertical">
+
+    <!-- Block 1 -->
+    <LinearLayout
+        android:id="@+id/Block1"
+        android:layout_width="165dp"
+        android:layout_height="@dimen/size_part"
+        android:background="@color/warm_grey"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:text="@string/il_y_a_une_semaine" />
+
+        <Button
+            android:id="@+id/view_comment_button1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_comment_black_48px"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="135dp" />
+    </LinearLayout>
+
+    <!-- Block 2 -->
+    <LinearLayout
+        android:id="@+id/Block2"
+        android:layout_width="110dp"
+        android:layout_height="@dimen/size_part"
+        android:background="@color/faded_red"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:text="@string/il_y_a_6_jours" />
+
+        <Button
+            android:id="@+id/view_comment_button2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_comment_black_48px"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="80dp" />
+
+    </LinearLayout>
+
+    <!-- Block 3 -->
+    <LinearLayout
+        android:id="@+id/Block3"
+        android:layout_width="220dp"
+        android:layout_height="@dimen/size_part"
+        android:background="@color/cornflower_blue_65"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:text="@string/il_y_a_5_jours"/>
+
+        <Button
+            android:id="@+id/view_comment_button3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_comment_black_48px"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="190dp"/>
+    </LinearLayout>
+
+    <!-- Block 4 -->
+    <LinearLayout
+        android:id="@+id/Block4"
+        android:layout_width="275dp"
+        android:layout_height="@dimen/size_part"
+        android:background="@color/light_sage"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:text="@string/il_y_a_4_jours"/>
+
+        <Button
+            android:id="@+id/view_comment_button4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_comment_black_48px"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="245dp"/>
+    </LinearLayout>
+
+    <!-- Block 5 -->
+    <LinearLayout
+        android:id="@+id/Block5"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_part"
+        android:background="@color/banana_yellow"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:text="@string/il_y_a_3_jours"/>
+
+        <Button
+            android:id="@+id/view_comment_button5"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_comment_black_48px"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="@dimen/margin"/>
+    </LinearLayout>
+
+    <!-- Block 6 -->
+
+    <LinearLayout
+        android:id="@+id/Block6"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_part"
+        android:background="@color/banana_yellow"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:text="@string/avant_hier"/>
+
+        <Button
+            android:id="@+id/view_comment_button6"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_comment_black_48px"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="@dimen/margin"/>
+    </LinearLayout>
+
+    <!-- Block 7 -->
+
+    <LinearLayout
+        android:id="@+id/Block7"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/banana_yellow"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:text="@string/hier"/>
+
+        <Button
+            android:id="@+id/view_comment_button7"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_comment_black_48px"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="@dimen/margin"/>
+    </LinearLayout>
+
+</LinearLayout>
