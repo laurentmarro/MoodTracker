@@ -63,10 +63,8 @@ public class HappySmileyFragment extends Fragment {
 
                 builder.setPositiveButton("VALIDER", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-
                         String COMMENT_OF_TODAY = input.getText().toString();
                         preferences.edit().putString("Commentaire", COMMENT_OF_TODAY).apply();
-
                     }
                 });
                 builder.setCancelable(true);

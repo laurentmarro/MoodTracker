@@ -15,7 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import projet3.moodtracker.Controllers.Activities.HistoricalActivity;
+
+import projet3.moodtracker.Models.Data;
 import projet3.moodtracker.R;
 
 public class SadSmileyFragment extends Fragment {
@@ -40,8 +41,8 @@ public class SadSmileyFragment extends Fragment {
         historical_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent historicalActivity = new Intent(getActivity(), HistoricalActivity.class);
-                startActivity(historicalActivity);
+                Intent myIntent = new Intent(getActivity(), Data.class);
+                startActivity(myIntent);
             }
         });
 

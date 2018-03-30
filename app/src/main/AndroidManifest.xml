@@ -20,5 +20,8 @@
         <activity android:name=".Controllers.Activities.HistoricalActivity">
         </activity>
 
+        <activity android:name=".Models.Data">
+        </activity>
+
     </application>
 </manifest>

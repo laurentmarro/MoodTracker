@@ -28,9 +28,9 @@ public class PageAdapter extends FragmentPagerAdapter {
         switch (position) {
 
             case 0: {
-                return SadSmileyFragment.newInstance();}
-            case 1: {
                 return DisappointedSmileyFragment.newInstance();}
+            case 1: {
+                return SadSmileyFragment.newInstance();}
             case 2: {
                 return NormalSmileyFragment.newInstance();}
             case 3: {
