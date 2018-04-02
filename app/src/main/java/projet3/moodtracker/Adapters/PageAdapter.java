@@ -28,17 +28,27 @@ public class PageAdapter extends FragmentPagerAdapter {
         switch (position) {
 
             case 0: {
-                return DisappointedSmileyFragment.newInstance();}
+                return SadSmileyFragment.newInstance();
+            }
+
             case 1: {
-                return SadSmileyFragment.newInstance();}
+                return DisappointedSmileyFragment.newInstance();
+            }
+
             case 2: {
-                return NormalSmileyFragment.newInstance();}
+                return NormalSmileyFragment.newInstance();
+            }
+
             case 3: {
-                return HappySmileyFragment.newInstance();}
+                return HappySmileyFragment.newInstance();
+            }
+
             case 4: {
-                return SuperHappySmileyFragment.newInstance();}
+                return SuperHappySmileyFragment.newInstance();
+            }
+
             default:
                 return null;
-        }
+            }
     }
 }

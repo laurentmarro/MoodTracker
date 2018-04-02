@@ -113,6 +113,14 @@ public class DisappointedSmileyFragment extends Fragment {
         return view;
     }
 
+    private void comment_update() {
+        // if mood_of_today doesn't exist
+
+        if (COMMENT == null) {
+            COMMENT = "0";
+        }
+    }
+
     private void mood_update() {
         // if mood_of_today doesn't exist
 
@@ -131,7 +139,7 @@ public class DisappointedSmileyFragment extends Fragment {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(key, value);
-        editor.commit();
+        editor.apply();
     }
 
     private void backup_keys() {
@@ -145,6 +153,7 @@ public class DisappointedSmileyFragment extends Fragment {
     private void backup() {
         date();
         mood_update();
+        comment_update();
         TO_SAVE = DATE+"-"+MOOD+"-"+COMMENT;
         backup_keys();
     }

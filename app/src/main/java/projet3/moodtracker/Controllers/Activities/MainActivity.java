@@ -8,12 +8,25 @@ import projet3.moodtracker.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static int position = 3;
+
+    // Getter et setter
+
+    public static int getPosition() {
+        return position;
+    }
+
+    public static void setPosition(int position) {
+        MainActivity.position = position;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // Configure ViewPager
+
         this.configureViewPager();
     }
 
