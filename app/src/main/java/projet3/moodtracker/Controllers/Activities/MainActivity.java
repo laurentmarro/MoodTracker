@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import projet3.moodtracker.Adapters.PageAdapter;
 import projet3.moodtracker.R;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -14,5 +15,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ViewPager pager = (ViewPager) findViewById(R.id.activity_main_viewpager);
         pager.setAdapter(new PageAdapter(getSupportFragmentManager()) {});
+        pager.setCurrentItem(3);
     }
 }
