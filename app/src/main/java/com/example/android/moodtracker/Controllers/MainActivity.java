@@ -1,10 +1,15 @@
 package com.example.android.moodtracker.Controllers;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.preference.PreferenceManager;
@@ -31,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
     private ImageView addview;
     private ImageView smileyview;
     private static String COMMENT = null;
-    private int maxLength = 30;
+    private int maxLength = 50;
     private static String MOOD = null;
     private static String DATE = null;
     private static String TO_SAVE = null;
     private int position = 3;
-    ArrayList<Integer> smileys = new ArrayList<>();
-    ArrayList<String> colors;
-    ArrayList<String> moods;
+    private ArrayList<Integer> smileys = new ArrayList<>();
+    private ArrayList<String> colors;
+    private ArrayList<String> moods;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,7 +177,6 @@ public class MainActivity extends AppCompatActivity {
                 builder.setCancelable(true);
                 AlertDialog dialog = builder.create();
                 dialog.show();
-                backup();
             }
         });
 
@@ -207,10 +211,12 @@ public class MainActivity extends AppCompatActivity {
                 //Update of MOOD_OF_TODAY
                 MOOD = moods.get(position);
                 toast("Mood : " + MOOD + " is today's mood.");
-                backup();
             }
         });
-        backup();
+
+        // Set the alarm
+        backup_midnight();
+
     }
 
     // method to set color and smiley
@@ -254,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // method to concatenate data for backup
-    private void backup() {
+    public void backup() {
         date();
         mood_update();
         comment_update();
@@ -265,5 +271,40 @@ public class MainActivity extends AppCompatActivity {
     // Backup of data
     private void backup_keys() {
         putPref(DATE, TO_SAVE, MainActivity.this);
+    }
+
+    // Backup scheduled at midnight
+    private void backup_midnight() {
+        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,0);
+
+        // Set the alarm to start at 12:00 p.m.
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND,0);
+        // Set interval
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+        setBootReceiverEnabled(PackageManager.COMPONENT_ENABLED_STATE_ENABLED);
+    }
+
+    public class AlarmReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            backup();
+            Intent intent1 = new Intent(context,MainActivity.class);
+            context.startActivity(intent1);
+        }
+    }
+
+    private void setBootReceiverEnabled(int componentEnabledState) {
+        ComponentName componentName = new ComponentName(this, AlarmReceiver.class);
+        PackageManager packageManager = getPackageManager();
+        packageManager.setComponentEnabledSetting(componentName,
+                componentEnabledState,
+                PackageManager.DONT_KILL_APP);
     }
 }

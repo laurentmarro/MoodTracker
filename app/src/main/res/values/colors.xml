@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <!-- Array of colors that will be used by ViewPager as background colors -->
+    <!-- Array of colors that will be used as background colors -->
     <array name="colorPagesViewPager">
         <item>#ffde3c50</item>
         <item>#ff9b9b9b</item>

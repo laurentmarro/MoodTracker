@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class HistoricalActivity extends AppCompatActivity {
+public class HistoricalActivity extends AppCompatActivity implements View.OnClickListener {
 
     // Var
     private static String DATE = "";
@@ -27,8 +27,10 @@ public class HistoricalActivity extends AppCompatActivity {
     private List<String> moods = new ArrayList<>();
     private List<String> comments = new ArrayList<>();
     private List<String> dates = new ArrayList<>();
-    ArrayList<String> colors;
-    ArrayList<String> moods_origines;
+    private ArrayList<String> colors;
+    private ArrayList<String> moods_origines;
+    private ArrayList<ImageView> buttons;
+    private ArrayList<ConstraintLayout> blocks;
 
     // Widgets
     private ConstraintLayout Block1;
@@ -49,7 +51,7 @@ public class HistoricalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_historical);
+        setContentView(R.layout.historical_activity);
 
         // 7 blocks
         Block1 = (ConstraintLayout) findViewById(R.id.Block1);
@@ -61,6 +63,7 @@ public class HistoricalActivity extends AppCompatActivity {
         Block7 = (ConstraintLayout) findViewById(R.id.Block7);
 
         // 7 Buttons
+
         view_comment_button1 = (ImageView) findViewById(R.id.view_comment_button1);
         view_comment_button2 = (ImageView) findViewById(R.id.view_comment_button2);
         view_comment_button3 = (ImageView) findViewById(R.id.view_comment_button3);
@@ -69,66 +72,57 @@ public class HistoricalActivity extends AppCompatActivity {
         view_comment_button6 = (ImageView) findViewById(R.id.view_comment_button6);
         view_comment_button7 = (ImageView) findViewById(R.id.view_comment_button7);
 
+        // Use Tag to 'name' the buttons
+
+        view_comment_button1.setTag(0);
+        view_comment_button2.setTag(1);
+        view_comment_button3.setTag(2);
+        view_comment_button4.setTag(3);
+        view_comment_button5.setTag(4);
+        view_comment_button6.setTag(5);
+        view_comment_button7.setTag(6);
+
+        view_comment_button1.setOnClickListener(this);
+        view_comment_button2.setOnClickListener(this);
+        view_comment_button3.setOnClickListener(this);
+        view_comment_button4.setOnClickListener(this);
+        view_comment_button5.setOnClickListener(this);
+        view_comment_button6.setOnClickListener(this);
+        view_comment_button7.setOnClickListener(this);
+
+        // Updating Array
+
+        buttons = new ArrayList<>();
+        buttons.add(view_comment_button1);
+        buttons.add(view_comment_button2);
+        buttons.add(view_comment_button3);
+        buttons.add(view_comment_button4);
+        buttons.add(view_comment_button5);
+        buttons.add(view_comment_button6);
+        buttons.add(view_comment_button7);
+
+        blocks = new ArrayList<>();
+        blocks.add(Block1);
+        blocks.add(Block2);
+        blocks.add(Block3);
+        blocks.add(Block4);
+        blocks.add(Block5);
+        blocks.add(Block6);
+        blocks.add(Block7);
+
+        // methods
+
         recovery();
         datas();
         display_buttons();
         blocks_width_and_set_color();
-
-        view_comment_button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toast(comments.get(0));
-            }
-        });
-
-        view_comment_button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toast(comments.get(1));
-            }
-        });
-
-        view_comment_button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toast(comments.get(2));
-            }
-        });
-
-        view_comment_button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toast(comments.get(3));
-            }
-        });
-
-        view_comment_button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toast(comments.get(4));
-            }
-        });
-
-        view_comment_button6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toast(comments.get(5));
-            }
-        });
-
-        view_comment_button7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toast(comments.get(6));
-            }
-        });
     }
 
     private void recovery() {
         PARAMETERS = getPref("PARAMETERS", this);
     }
 
-    private void datas() {
+    private void datas() { // to update datas
         dates = new ArrayList<>();
         moods = new ArrayList<>();
         comments = new ArrayList<>();
@@ -151,20 +145,10 @@ public class HistoricalActivity extends AppCompatActivity {
     }
 
     private void display_buttons() { // Show buttons
-        if (comments.get(0).equals("0")) {
-           view_comment_button1.setVisibility(View.GONE); }
-        if (comments.get(1).equals("0")) {
-            view_comment_button2.setVisibility(View.GONE); }
-        if (comments.get(2).equals("0")) {
-            view_comment_button3.setVisibility(View.GONE); }
-        if (comments.get(3).equals("0")) {
-            view_comment_button4.setVisibility(View.GONE); }
-        if (comments.get(4).equals("0")) {
-            view_comment_button5.setVisibility(View.GONE); }
-        if (comments.get(5).equals("0")) {
-            view_comment_button6.setVisibility(View.GONE); }
-        if (comments.get(6).equals("0")) {
-            view_comment_button7.setVisibility(View.GONE); }
+        for (int i = 0; i <7 ; i++) {
+            if (comments.get(i).equals("0")) {
+                buttons.get(i).setVisibility(View.GONE); }
+        }
     }
 
     private void toast(String message) {
@@ -197,60 +181,20 @@ public class HistoricalActivity extends AppCompatActivity {
         // Width
         int screenWidth = getResources().getDisplayMetrics().widthPixels;
 
-        // Block 1
-        for (int i = 0; i <5 ; i++) {
-            if (moods.get(0).equals(moods_origines.get(i))) {position = i;}
-            Block1.setBackgroundColor(Color.parseColor(colors.get(position)));
-            ViewGroup.LayoutParams params=Block1.getLayoutParams();
-            params.width=screenWidth*(position+1)/5;
+        // Blocks
+        for (int j = 0; j <7 ; j++) {
+            for (int i = 0; i <5 ; i++) {
+                if (moods.get(j).equals(moods_origines.get(i))) {position = i;}
+                blocks.get(j).setBackgroundColor(Color.parseColor(colors.get(position)));
+                ViewGroup.LayoutParams params=blocks.get(j).getLayoutParams();
+                params.width=screenWidth*(position+1)/5;
+            }
         }
+    }
 
-        // Block 2
-        for (int i = 0; i <5 ; i++) {
-            if (moods.get(1).equals(moods_origines.get(i))) {position = i;}
-            Block2.setBackgroundColor(Color.parseColor(colors.get(position)));
-            ViewGroup.LayoutParams params=Block2.getLayoutParams();
-            params.width=screenWidth*(position+1)/5;
-        }
-
-        // Block 3
-        for (int i = 0; i <5 ; i++) {
-            if (moods.get(2).equals(moods_origines.get(i))) {position = i;}
-            Block3.setBackgroundColor(Color.parseColor(colors.get(position)));
-            ViewGroup.LayoutParams params=Block3.getLayoutParams();
-            params.width=screenWidth*(position+1)/5;
-        }
-
-        // Block 4
-        for (int i = 0; i <5 ; i++) {
-            if (moods.get(3).equals(moods_origines.get(i))) {position = i;}
-            Block4.setBackgroundColor(Color.parseColor(colors.get(position)));
-            ViewGroup.LayoutParams params=Block4.getLayoutParams();
-            params.width=screenWidth*(position+1)/5;
-        }
-
-        // Block 5
-        for (int i = 0; i <5 ; i++) {
-            if (moods.get(4).equals(moods_origines.get(i))) {position = i;}
-            Block5.setBackgroundColor(Color.parseColor(colors.get(position)));
-            ViewGroup.LayoutParams params=Block5.getLayoutParams();
-            params.width=screenWidth*(position+1)/5;
-        }
-
-        // Block 6
-        for (int i = 0; i <5 ; i++) {
-            if (moods.get(5).equals(moods_origines.get(i))) {position = i;}
-            Block6.setBackgroundColor(Color.parseColor(colors.get(position)));
-            ViewGroup.LayoutParams params=Block6.getLayoutParams();
-            params.width=screenWidth*(position+1)/5;
-        }
-
-        // Block 7
-        for (int i = 0; i <5 ; i++) {
-            if (moods.get(6).equals(moods_origines.get(i))) {position = i;}
-            Block7.setBackgroundColor(Color.parseColor(colors.get(position)));
-            ViewGroup.LayoutParams params=Block7.getLayoutParams();
-            params.width=screenWidth*(position+1)/5;
-        }
+    @Override
+    public void onClick(View v) {
+        int button = (int) v.getTag();
+        toast(comments.get(button));
     }
 }
